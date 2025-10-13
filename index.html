@@ -3,119 +3,128 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio — Your Name</title>
+  <title>Portfolio</title>
+
+  <!-- Roboto font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
-  <meta name="robots" content="noindex,nofollow"><!-- keep page unindexed -->
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- Decorative big green wave -->
+  <div class="big-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" width="100%" height="220">
+      <!-- front wave -->
+      <path d="M0,160 C240,240 480,40 720,120 C960,200 1200,120 1440,170 L1440,0 L0,0 Z" fill="#84a286" opacity="0.25"></path>
+      <!-- deeper wave for depth -->
+      <path d="M0,190 C250,140 520,220 760,140 C1000,60 1250,140 1440,110 L1440,0 L0,0 Z" fill="#84a286" opacity="0.35"></path>
+    </svg>
+  </div>
+
+  <!-- Header / Name -->
   <header class="site-header">
-    <div class="container">
+    <div class="wrap">
       <h1 class="brand">
         <span class="accent">AGATHA</span> POLICELLA
       </h1>
-      <p class="tagline">If it's digital and creative, I'm in.</p>
+      <p class="tagline">If it’s digital and creative, I’m in.</p>
     </div>
-    <div class="wave"></div>
   </header>
 
-  <main>
+  <main class="wrap">
+
     <!-- Videos -->
     <section class="section">
-      <div class="container">
-        <h2 class="section-title">Videos</h2>
+      <h2 class="section-title underline">Videos</h2>
 
-        <div class="videos-grid">
-          <!-- FEATURE video (large left) -->
-          <article class="card video-card feature">
-            <div class="ratio">
-              <!-- Use your unlisted YouTube ID here -->
-              <iframe
-                src="https://www.youtube.com/embed/6aE3BjwR5Jk?rel=0&modestbranding=1"
-                title="Feature Video"
-                loading="lazy"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="card-footer">
-              <span>09:07</span>
-            </div>
-          </article>
+      <div class="video-grid">
+        <article class="card card-video card-lg">
+          <div class="media">
+            <iframe
+              src="https://www.youtube.com/embed/6aE3BjwR5Jk?rel=0&modestbranding=1"
+              title="Feature Video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <footer class="card-caption">00:07 / 00:15</footer>
+        </article>
 
-          <!-- Small video 1 -->
-          <article class="card video-card small">
-            <div class="ratio">
-              <video controls preload="metadata" poster="images/video-thumb-1.jpg">
-                <source src="videos/demo-1.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="card-footer">
-              <span>11:35</span>
-            </div>
-          </article>
+        <article class="card card-video">
+          <div class="media">
+            <video controls preload="metadata" poster="images/placeholder-video.jpg">
+              <source src="videos/demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <footer class="card-caption">00:20 / 01:55</footer>
+        </article>
 
-          <!-- Small video 2 -->
-          <article class="card video-card small">
-            <div class="ratio">
-              <video controls preload="metadata" poster="images/video-thumb-2.jpg">
-                <source src="videos/demo-2.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="card-footer">
-              <span>01:15</span>
-            </div>
-          </article>
-        </div>
+        <article class="card card-video card-sm">
+          <div class="media">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+              title="Small Video 1" frameborder="0" allowfullscreen>
+            </iframe>
+          </div>
+          <footer class="card-caption">00:07 / 00:15</footer>
+        </article>
+
+        <article class="card card-video card-sm">
+          <div class="media">
+            <iframe
+              src="https://www.youtube.com/embed/ScMzIvxBSi4?rel=0&modestbranding=1"
+              title="Small Video 2" frameborder="0" allowfullscreen>
+            </iframe>
+          </div>
+          <footer class="card-caption">00:07 / 00:15</footer>
+        </article>
       </div>
     </section>
 
-    <!-- Banners (Masonry) -->
+    <!-- Banners (masonry) -->
     <section class="section">
-      <div class="container">
-        <h2 class="section-title">Banners</h2>
+      <h2 class="section-title underline">Banner</h2>
 
-        <div class="masonry">
-          <!-- Add/replace images as needed -->
-          <img src="images/banner-1.jpg" alt="Banner 1" loading="lazy">
-          <img src="images/banner-2.jpg" alt="Banner 2" loading="lazy">
-          <img src="images/banner-3.jpg" alt="Banner 3" loading="lazy">
-          <img src="images/banner-4.jpg" alt="Banner 4" loading="lazy">
-          <img src="images/banner-5.jpg" alt="Banner 5" loading="lazy">
-          <img src="images/banner-6.jpg" alt="Banner 6" loading="lazy">
-          <img src="images/banner-7.jpg" alt="Banner 7" loading="lazy">
-          <img src="images/banner-8.jpg" alt="Banner 8" loading="lazy">
-          <img src="images/banner-9.jpg" alt="Banner 9" loading="lazy">
-        </div>
+      <div class="masonry">
+        <!-- Replace these with your /images files -->
+        <img src="images/banner01.jpg" alt="">
+        <img src="images/banner02.jpg" alt="">
+        <img src="images/banner03.jpg" alt="">
+        <img src="images/banner04.jpg" alt="">
+        <img src="images/banner05.jpg" alt="">
+        <img src="images/banner06.jpg" alt="">
+        <img src="images/banner07.jpg" alt="">
+        <img src="images/banner08.jpg" alt="">
       </div>
     </section>
 
     <!-- Website & App Design -->
     <section class="section">
-      <div class="container">
-        <h2 class="section-title">Website &amp; App Design</h2>
+      <h2 class="section-title underline">Website &amp; App Design</h2>
 
-        <div class="design-grid">
-          <img class="design" src="images/design-1.jpg" alt="Design 1" loading="lazy">
-          <img class="design" src="images/design-2.jpg" alt="Design 2" loading="lazy">
-          <img class="design" src="images/design-3.jpg" alt="Design 3" loading="lazy">
-          <img class="design" src="images/design-4.jpg" alt="Design 4" loading="lazy">
-          <img class="design" src="images/design-5.jpg" alt="Design 5" loading="lazy">
-          <img class="design" src="images/design-6.jpg" alt="Design 6" loading="lazy">
-        </div>
+      <div class="thumb-grid">
+        <img class="thumb" src="images/web01.jpg" alt="">
+        <img class="thumb" src="images/web02.jpg" alt="">
+        <img class="thumb" src="images/web03.jpg" alt="">
+        <img class="thumb" src="images/web04.jpg" alt="">
+        <img class="thumb" src="images/web05.jpg" alt="">
+        <img class="thumb" src="images/web06.jpg" alt="">
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="wrap">
       © <span id="year"></span> Your Name
     </div>
   </footer>
 
   <script>
-    // current year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
