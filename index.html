@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=15" />
+  <link rel="stylesheet" href="style.css?v=16" />
 </head>
 <body>
 
@@ -28,7 +28,7 @@
   <!-- Header -->
   <header class="name-block wrap">
     <h1 class="display-name">
-      <span class="name-accent">AGATHA</span> POLICELLA
+      <span class="name-accent">AGATHA2</span> POLICELLA
     </h1>
     <p class="subtitle">If it’s digital and creative, I’m in.</p>
   </header>
@@ -37,87 +37,56 @@
 
   <main class="wrap">
 
-    <!-- VIDEOS (big left, two stacked right) -->
+    <!-- VIDEOS -->
     <section class="section">
       <h2 class="section-title underline">Videos</h2>
-      <div class="video-mosaic">
-        <!-- Big LEFT -->
-        <article class="card card-video big">
-          <div class="media">
-            <!-- Your main/feature video -->
-            <iframe
-              src="https://www.youtube.com/embed/6aE3BjwR5Jk?rel=0&modestbranding=1"
-              title="Video 1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-        </article>
-
-        <!-- Small RIGHT (top) -->
-        <article class="card card-video small small1">
-          <div class="media">
-            <!-- This was your 2nd video previously -->
-            <iframe
-              src="https://www.youtube.com/embed/a1BGC2ckqoQ?rel=0&modestbranding=1"
-              title="Video 2"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-        </article>
-
-        <!-- Small RIGHT (bottom) — new 3rd video you asked to add -->
-        <article class="card card-video small small2">
-          <div class="media">
-            <iframe
-              src="https://www.youtube.com/embed/a1BGC2ckqoQ?rel=0&modestbranding=1"
-              title="Video 3"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-        </article>
+      <div class="video-layout">
+        <div class="video-large">
+          <iframe
+            src="https://www.youtube.com/embed/6aE3BjwR5Jk?rel=0&modestbranding=1"
+            title="Video 1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-column">
+          <iframe
+            src="https://www.youtube.com/embed/a1BGC2ckqoQ?rel=0&modestbranding=1"
+            title="Video 2"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/a1BGC2ckqoQ?rel=0&modestbranding=1"
+            title="Video 3"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
       </div>
     </section>
 
-    <!-- ANIMATED BANNERS (inverted: two stacked LEFT, big RIGHT) -->
+    <!-- ANIMATED BANNERS -->
     <section class="section">
       <h2 class="section-title underline">Animated Banners</h2>
-      <div class="video-mosaic video-mosaic--invert">
-        <!-- Small LEFT (top) -->
-        <article class="card card-video small small1">
-          <div class="media">
-            <video controls preload="metadata" poster="images/XboxAST-thumb.jpg">
-              <source src="videos/XboxAST.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </article>
-
-        <!-- Small LEFT (bottom) -->
-        <article class="card card-video small small2">
-          <div class="media">
-            <video controls preload="metadata" poster="images/Stories_11-thumb.jpg">
-              <source src="videos/Stories_11.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </article>
-
-        <!-- Big RIGHT (the “1st” animated banner) -->
-        <article class="card card-video big">
-          <div class="media">
-            <video controls preload="metadata" poster="images/UEFACurrys-thumb.jpg">
-              <source src="videos/UEFACurrys.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </article>
+      <div class="video-layout inverted">
+        <div class="video-column">
+          <video controls preload="metadata" poster="images/XboxAST-thumb.jpg">
+            <source src="videos/XboxAST.mp4" type="video/mp4" />
+          </video>
+          <video controls preload="metadata" poster="images/Stories_11-thumb.jpg">
+            <source src="videos/Stories_11.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-large">
+          <video controls preload="metadata" poster="images/UEFACurrys-thumb.jpg">
+            <source src="videos/UEFACurrys.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </section>
 
-    <!-- BANNERS (static) -->
+    <!-- BANNERS -->
     <section class="section">
       <h2 class="section-title underline">Banners</h2>
       <div class="masonry">
