@@ -14,24 +14,21 @@
 </head>
 <body>
 
-  <!-- Wave -->
-  <div class="top-wave" aria-hidden="true">
-    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" width="100%" height="200">
-      <path
-        d="M0,120 C600,80 1000,220 1440,120 L1440,0 L0,0 Z"
-        fill="#84a286"></path>
+  <!-- Wave (thicker; title/subtitle inside) -->
+  <div class="top-wave">
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="none" width="100%" height="300" aria-hidden="true">
+      <!-- same shape, extended vertically so text fits -->
+      <path d="M0,180 C600,120 1000,320 1440,180 L1440,0 L0,0 Z" fill="#84a286"></path>
     </svg>
+
+    <!-- Header now inside the wave -->
+    <header class="name-block wrap">
+      <h1 class="display-name">
+        <span class="name-accent">AGATHA</span> POLICELLA
+      </h1>
+      <p class="subtitle">If it’s digital and creative, I’m in.</p>
+    </header>
   </div>
-
-  <!-- Header -->
-  <header class="name-block wrap">
-    <h1 class="display-name">
-      <span class="name-accent">AGATHA</span> POLICELLA
-    </h1>
-    <p class="subtitle">If it’s digital and creative, I’m in.</p>
-  </header>
-
-  <div class="header-separator"></div>
 
   <main class="wrap">
 
@@ -118,89 +115,64 @@
       </div>
     </section>
 
-    <!-- ===== BANNERS (static) ===== -->
-<section class="section">
-  <h2 class="section-title underline">Prints</h2>
+    <!-- ===== PRINTS (static) ===== -->
+    <section class="section">
+      <h2 class="section-title underline">Prints</h2>
 
-  <div class="static-banners">
-    <!-- Vertical PDF 1 -->
-    <div class="banner-vertical">
-      <embed src="images/CAT_Flyer.pdf" type="application/pdf" />
-    </div>
+      <div class="static-banners">
+        <!-- Vertical PDF 1 -->
+        <div class="banner-vertical">
+          <embed src="images/CAT_Flyer.pdf" type="application/pdf" />
+        </div>
 
-    <!-- Vertical PDF 2 -->
-    <div class="banner-vertical">
-      <embed src="images/RollerBannerFinal.png" type="image/png" />
-    </div>
+        <!-- Vertical image -->
+        <div class="banner-vertical">
+          <embed src="images/RollerBannerFinal.png" type="image/png" />
+        </div>
 
-    <!-- Square PDF -->
-    <div class="banner-square">
-      <embed src="images/XmasFinal.pdf" type="application/pdf" />
-    </div>
-  </div>
-</section>
+        <!-- Square PDF -->
+        <div class="banner-square">
+          <embed src="images/XmasFinal.pdf" type="application/pdf" />
+        </div>
+      </div>
+    </section>
 
+    <!-- ===== WEBSITE & APP DESIGNS ===== -->
+    <section class="section">
+      <h2 class="section-title underline">Website &amp; App Designs</h2>
 
-<!-- WEBSITE & APP DESIGNS -->
-<section class="section">
-  <h2 class="section-title underline">Website &amp; App Designs</h2>
+      <div class="apps-5col apps-debug">
+        <img src="./images/Calendar.png" alt="" loading="lazy" />
+        <img src="./images/Chores.png"   alt="" loading="lazy" />
+        <img src="./images/Dash.png"     alt="" loading="lazy" />
+        <img src="./images/Expenses.png" alt="" loading="lazy" />
+        <img src="./images/Shopping.png" alt="" loading="lazy" />
+      </div>
+    </section>
 
-  <div class="apps-5col apps-debug">
-    <img src="./images/Calendar.png"
-         alt="Calendar"
-         loading="lazy"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/600x1200?text=Dash.png+not+found';"/>
-
-    <img src="./images/Chores.png"
-         alt="Chores"
-         loading="lazy"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/600x1200?text=Calendar.png+not+found';"/>
-
-    <img src="./images/Dash.png"
-         alt="Dash"
-         loading="lazy"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/600x1200?text=Chores.png+not+found';"/>
-
-    <img src="./images/Expenses.png"
-         alt="Expenses"
-         loading="lazy"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/600x1200?text=Expenses.png+not+found';"/>
-
-    <img src="./images/Shopping.png"
-         alt="Shopping"
-         loading="lazy"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/600x1200?text=Shopping.png+not+found';"/>
-  </div>
-</section>
-
-
-
-
-
-<!-- ===== SOUNDS ===== -->
+    <!-- ===== SOUNDS ===== -->
     <section class="section sound-section">
-  <div class="wrap">
-    <h2 class="section-title underline">Sounds</h2>
-    <div class="sound-grid">
-      <div class="sound-card">
-        <h3 class="sound-title">Spotify Ad for Alexa at Argos | 2024</h3>
-        <audio controls>
-          <source src="videos/ArgosFinal1.wav" type="audio/wav">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
+      <div class="wrap">
+        <h2 class="section-title underline">Sounds</h2>
+        <div class="sound-grid">
+          <div class="sound-card">
+            <h3 class="sound-title">Spotify Ad for Alexa at Argos | 2024</h3>
+            <audio controls>
+              <source src="videos/ArgosFinal1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
 
-      <div class="sound-card">
-        <h3 class="sound-title">Late Nights in Heaven's Kitchen - Podcast Intro | 2025</h3>
-        <audio controls>
-          <source src="videos/PodcastIntro.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
+          <div class="sound-card">
+            <h3 class="sound-title">Late Nights in Heaven's Kitchen - Podcast Intro | 2025</h3>
+            <audio controls>
+              <source src="videos/PodcastIntro.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
   </main>
 
