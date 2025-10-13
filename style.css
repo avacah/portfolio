@@ -19,10 +19,10 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
-/* Wave */
+/* ================= WAVE ================= */
 .top-wave { line-height: 0; background: #fff; }
 
-/* Header */
+/* ================= HEADER ================= */
 .name-block { padding: 0 0 10px; text-align: left; }
 
 .display-name {
@@ -32,16 +32,27 @@ body {
   margin: 0 0 2px;
   font-size: clamp(42px, 7vw, 72px);
 }
+
 .name-accent { color: var(--accent); }
-.subtitle { margin: 0; color: var(--muted); font-size: clamp(18px, 2vw, 24px); font-weight: 500; }
 
-/* Separator */
-.header-separator { height: 6px; margin: 20px 0 50px; background:#fff; }
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+}
 
-/* Section spacing */
-.section { margin: 110px 0; }
+.header-separator {
+  height: 6px;
+  margin: 20px 0 50px;
+  background: #fff;
+}
 
-/* Titles + underline */
+/* ================= SECTIONS ================= */
+.section {
+  margin: 120px 0;
+}
+
 .section-title {
   position: relative;
   display: inline-block;
@@ -50,23 +61,29 @@ body {
   font-size: clamp(26px, 3vw, 36px);
   margin: 0 0 40px;
 }
-.section-title.underline::after{
-  content:""; position:absolute; bottom:-8px;
-  left:0.25em; right:-0.35em; height:6px;
-  background:var(--accent); border-radius:3px;
+
+.section-title.underline::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0.25em;
+  right: -0.35em;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 3px;
 }
 
-/* ====== Section 1: VIDEOS (big left, two stacked right) ====== */
-.mosaic{
-  display:grid;
-  gap:18px;
+/* ================= VIDEOS SECTION ================= */
+.mosaic {
+  display: grid;
+  gap: 18px;
 }
-.mosaic .big{ grid-area: big; }
+.mosaic .big { grid-area: big; }
 .mosaic .s1 { grid-area: s1; }
 .mosaic .s2 { grid-area: s2; }
 
-@media (min-width: 900px){
-  .mosaic{
+@media (min-width: 900px) {
+  .mosaic {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
@@ -76,52 +93,141 @@ body {
   }
 }
 
-.card{
-  background:var(--panel);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  overflow:hidden;
+.card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
-.media{ position:relative; aspect-ratio:16/9; overflow:hidden; }
-.media iframe, .media video, .media img{
-  width:100%; height:100%; object-fit:cover; display:block; border:0;
+/* Fix white gap under large video */
+.mosaic .big .media {
+  aspect-ratio: 16/9;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #000;
 }
 
-/* ====== Section 2: ANIMATED BANNERS (two stacked left, one vertical right) ====== */
-.abanners{
-  display:flex; gap:18px; flex-wrap:wrap;
-}
-.ab-col{
-  flex:1 1 60%;
-  display:flex; flex-direction:column; gap:18px;
-}
-.ab-vertical{
-  flex:1 1 35%;
-  display:flex; align-items:stretch;
+.mosaic .big iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  margin: 0;
+  vertical-align: bottom;
 }
 
-/* force vertical aspect on the single right video */
-.media-vertical{ position:relative; aspect-ratio:9/16; overflow:hidden; }
-.media-vertical video, .media-vertical iframe{
-  width:100%; height:100%; object-fit:cover; border:0; display:block;
+.media {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+.media iframe,
+.media video,
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 0;
 }
 
-/* Responsive stack */
-@media (max-width: 900px){
-  .mosaic{ grid-template-columns:1fr; grid-template-areas:"big" "s1" "s2"; }
-  .abanners{ flex-direction:column; }
-  .ab-col, .ab-vertical{ flex:1 1 100%; }
-  .media-vertical{ aspect-ratio:16/9; }
+/* ================= ANIMATED BANNERS ================= */
+.abanners {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-/* Masonry (static banners) */
-.masonry{ column-count:3; column-gap:16px; }
-.masonry img{ width:100%; margin:0 0 16px; border-radius:12px; box-shadow:var(--shadow); display:block; }
+/* Left column — swap video order */
+.ab-col {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column-reverse; /* swaps top & bottom videos */
+  gap: 18px;
+}
 
-/* Website & App Designs */
-.thumb-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.thumb{ width:100%; border-radius:12px; box-shadow:var(--shadow); aspect-ratio:16/9; object-fit:cover; display:block; }
+.ab-vertical {
+  flex: 1 1 35%;
+  display: flex;
+  align-items: stretch;
+}
 
-/* Footer */
-.site-footer{ color:#6b7280; padding:24px 0 40px; text-align:center; font-weight:500; }
+.media-vertical {
+  position: relative;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+}
+.media-vertical video,
+.media-vertical iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+  display: block;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .mosaic {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "big"
+      "s1"
+      "s2";
+  }
+
+  .abanners {
+    flex-direction: column;
+  }
+
+  .ab-col,
+  .ab-vertical {
+    flex: 1 1 100%;
+  }
+
+  .media-vertical {
+    aspect-ratio: 16/9;
+  }
+}
+
+/* ================= BANNERS (STATIC IMAGES) ================= */
+.masonry {
+  column-count: 3;
+  column-gap: 16px;
+}
+
+.masonry img {
+  width: 100%;
+  margin: 0 0 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+/* ================= WEBSITE & APP DESIGNS ================= */
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.thumb {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+  color: #6b7280;
+  padding: 24px 0 40px;
+  text-align: center;
+  font-weight: 500;
+}
