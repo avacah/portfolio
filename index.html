@@ -1,35 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Your Name</title>
   <link rel="stylesheet" href="style.css" />
+  <meta name="robots" content="noindex,nofollow"><!-- keep page unindexed -->
 </head>
 <body>
-  <header>
-    <h1>My Portfolio</h1>
-    <p>Welcome to my collection of videos and images.</p>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">
+        <span class="accent">AGATHA</span> POLICELLA
+      </h1>
+      <p class="tagline">If it's digital and creative, I'm in.</p>
+    </div>
+    <div class="wave"></div>
   </header>
 
-  <section id="gallery">
-    <h2>Featured Work</h2>
+  <main>
+    <!-- Videos -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Videos</h2>
 
-    <div class="item">
-      <img src="images/project1.jpg" alt="Project 1" />
-      <p>Photo Project 1</p>
+        <div class="videos-grid">
+          <!-- FEATURE video (large left) -->
+          <article class="card video-card feature">
+            <div class="ratio">
+              <!-- Use your unlisted YouTube ID here -->
+              <iframe
+                src="https://www.youtube.com/embed/6aE3BjwR5Jk?rel=0&modestbranding=1"
+                title="Feature Video"
+                loading="lazy"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="card-footer">
+              <span>09:07</span>
+            </div>
+          </article>
+
+          <!-- Small video 1 -->
+          <article class="card video-card small">
+            <div class="ratio">
+              <video controls preload="metadata" poster="images/video-thumb-1.jpg">
+                <source src="videos/demo-1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="card-footer">
+              <span>11:35</span>
+            </div>
+          </article>
+
+          <!-- Small video 2 -->
+          <article class="card video-card small">
+            <div class="ratio">
+              <video controls preload="metadata" poster="images/video-thumb-2.jpg">
+                <source src="videos/demo-2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="card-footer">
+              <span>01:15</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banners (Masonry) -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Banners</h2>
+
+        <div class="masonry">
+          <!-- Add/replace images as needed -->
+          <img src="images/banner-1.jpg" alt="Banner 1" loading="lazy">
+          <img src="images/banner-2.jpg" alt="Banner 2" loading="lazy">
+          <img src="images/banner-3.jpg" alt="Banner 3" loading="lazy">
+          <img src="images/banner-4.jpg" alt="Banner 4" loading="lazy">
+          <img src="images/banner-5.jpg" alt="Banner 5" loading="lazy">
+          <img src="images/banner-6.jpg" alt="Banner 6" loading="lazy">
+          <img src="images/banner-7.jpg" alt="Banner 7" loading="lazy">
+          <img src="images/banner-8.jpg" alt="Banner 8" loading="lazy">
+          <img src="images/banner-9.jpg" alt="Banner 9" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Website & App Design -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Website &amp; App Design</h2>
+
+        <div class="design-grid">
+          <img class="design" src="images/design-1.jpg" alt="Design 1" loading="lazy">
+          <img class="design" src="images/design-2.jpg" alt="Design 2" loading="lazy">
+          <img class="design" src="images/design-3.jpg" alt="Design 3" loading="lazy">
+          <img class="design" src="images/design-4.jpg" alt="Design 4" loading="lazy">
+          <img class="design" src="images/design-5.jpg" alt="Design 5" loading="lazy">
+          <img class="design" src="images/design-6.jpg" alt="Design 6" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © <span id="year"></span> Your Name
     </div>
-
-    <div class="item">
-      <video controls width="400">
-        <source src="videos/demo.mp4" type="video/mp4" />
-      </video>
-      <p>Short Video Demo</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Your Name</p>
   </footer>
+
+  <script>
+    // current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
