@@ -1,41 +1,84 @@
-body {
-  font-family: Arial, sans-serif;
+:root{
+  --bg: #f6f7f8;
+  --text: #172026;
+  --muted: #5b6570;
+  --accent: #68c08a;      /* green for first name */
+  --panel: #ffffff;
+  --shadow: 0 10px 30px rgba(20, 23, 28, .08);
+  --radius: 14px;
+  --gap: 18px;
+}
+
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* containers */
+.container{
+  width: min(1100px, 90vw);
+  margin: 0 auto;
+}
+
+.section{
+  padding: 28px 0 8px 0;
+}
+
+.section-title{
+  font-size: clamp(20px, 2.2vw, 28px);
+  margin: 8px 0 18px;
+  font-weight: 700;
+}
+
+/* header */
+.site-header{
+  background: #fff;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.brand{
+  font-size: clamp(28px, 5vw, 44px);
+  letter-spacing: .5px;
+  margin: 22px 0 4px;
+}
+.brand .accent{ color: var(--accent); font-weight: 800; }
+
+.tagline{
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+/* subtle wave separator */
+.wave{
+  height: 18px;
+  background: linear-gradient(to right, transparent 0%, #e8efe9 30%, transparent 80%);
+}
+
+/* footer */
+.site-footer{
+  margin-top: 40px;
+  padding: 24px 0;
+  background:#fff;
+  box-shadow: 0 -6px 20px rgba(20,23,28,.05);
+  color: var(--muted);
   text-align: center;
-  margin: 0;
-  background-color: #f9f9f9;
-  color: #333;
 }
 
-header {
-  background-color: #333;
-  color: white;
-  padding: 2em 0;
+/* cards & media */
+.card{
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
-#gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1em;
-  padding: 2em;
-}
-
-.item {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 1em;
-  width: 300px;
-}
-
-img, video {
+.ratio{ /* 16:9 wrapper for iframe/video */
+  position: relative;
   width: 100%;
-  border-radius: 10px;
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  padding: 1em 0;
-  margin-top: 2em;
-}
+  padding-top: 56.25%;
+  border-radius: calc(var(--radius) - 2px);
+  overflow:
