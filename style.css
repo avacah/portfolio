@@ -20,36 +20,44 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
-/* ================= WAVE ================= */
-.top-wave { line-height: 0; background: #fff; }
+/* ================= WAVE (title inside) ================= */
+.top-wave {
+  position: relative;
+  height: 300px;                 /* thicker wave */
+  overflow: hidden;
+  background: #84a286;           /* same as path to avoid gaps */
+  color: #fff;
+}
+.top-wave svg {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 300px;    /* match container height */
+}
 
-/* ================= HEADER ================= */
-.name-block { padding: 0 0 10px; text-align: left; }
-
+/* ================= HEADER (inside wave) ================= */
+.name-block {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 60px;             /* adjust to taste */
+  color: #fff;
+}
 .display-name {
   font-family: Montserrat, Roboto, sans-serif;
   font-weight: 900;
   letter-spacing: .5px;
-  margin: 0 0 2px;
-  font-size: clamp(42px, 7vw, 72px);
-}
-
-.name-accent { color: var(--accent); }
-
-.subtitle {
   margin: 0;
-  color: var(--muted);
+  font-size: clamp(48px, 8vw, 80px);
+}
+.name-accent { color: #fff; }
+.subtitle {
+  margin: 10px 0 0;
   font-size: clamp(18px, 2vw, 24px);
-  font-weight: 500;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
 }
 
-.header-separator {
-  height: 6px;
-  margin: 20px 0 50px;
-  background: #fff;
-}
-
-/* ================= SECTIONS ================= */
+/* ================= SECTIONS & TITLES ================= */
 .section { margin: 120px 0; }
 
 .section-title {
@@ -60,27 +68,27 @@ body {
   font-size: clamp(26px, 3vw, 36px);
   margin: 0 0 40px;
 }
-
 .section-title.underline::after {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: 0.25em;
-  right: -0.35em;
+  left: 0.25em;       /* start mid-second letter */
+  right: -0.35em;     /* end slightly past last letter */
   height: 6px;
   background: var(--accent);
   border-radius: 3px;
 }
 
-/* ================= MEDIA ================= */
-.media, .media-vertical {
+/* ================= COMMON MEDIA WRAPPERS ================= */
+.media,
+.media-vertical {
   position: relative;
   overflow: hidden;
-  line-height: 0;
+  line-height: 0;               /* kill baseline gaps */
   background: #000;
   border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
-
 .media { aspect-ratio: 16 / 9; }
 .media-vertical { aspect-ratio: 9 / 16; }
 
@@ -100,7 +108,7 @@ body {
   margin: 0;
 }
 
-/* ================= VIDEOS ================= */
+/* ================= VIDEOS (big left, two stacked right) ================= */
 .mosaic {
   display: grid;
   gap: 18px;
@@ -120,24 +128,29 @@ body {
   }
 }
 
-.mosaic .big {
-  display: grid;
-}
+/* Big video fills the whole left column height (no white sliver) */
+.mosaic .big { display: grid; }
 .mosaic .big .media {
-  aspect-ratio: auto;
+  aspect-ratio: auto;       /* unlock ratio so it can match the right column height */
   height: 100%;
-  background: #000;
 }
 
-/* ================= ANIMATED BANNERS ================= */
+/* Card shell (for consistent rounding/shadows when used) */
+.card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* ================= ANIMATED BANNERS (two stacked left, one vertical right) ================= */
 .abanners {
   display: grid;
   gap: 18px;
 }
-
 @media (min-width: 900px) {
   .abanners {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;   /* left stack wider, right vertical */
     grid-template-rows: auto auto;
     grid-template-areas:
       "ab-left ab-vert"
@@ -145,56 +158,28 @@ body {
     align-items: stretch;
   }
 }
-
 .ab-col {
   grid-area: ab-left;
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: 18px;
 }
-
 .ab-vertical {
   grid-area: ab-vert;
   display: grid;
 }
-
 .ab-vertical .media-vertical {
-  aspect-ratio: auto;
+  aspect-ratio: auto;       /* fill the full two-row height */
   height: 100%;
-  background: #000;
 }
 
-@media (max-width: 900px) {
-  .mosaic {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "big"
-      "s1"
-      "s2";
-  }
-
-  .abanners {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "ab-left"
-      "ab-left"
-      "ab-vert";
-  }
-
-  .ab-vertical .media-vertical { aspect-ratio: 16 / 9; height: auto; }
-}
-
-
-
-/* ================= STATIC BANNERS ================= */
+/* ================= PRINTS (static banners with PDFs/images) ================= */
 .static-banners {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   align-items: start;
 }
-
 .banner-vertical embed,
 .banner-vertical img {
   width: 100%;
@@ -202,10 +187,8 @@ body {
   border: none;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  object-fit: cover;
   background: #fafafa;
 }
-
 .banner-square embed,
 .banner-square img {
   width: 100%;
@@ -215,26 +198,38 @@ body {
   box-shadow: var(--shadow);
   background: #fafafa;
 }
-
-/* Adjust for large displays */
 @media (min-width: 1000px) {
-  .static-banners {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .static-banners { grid-template-columns: repeat(3, 1fr); }
 }
 
-
-/* ================= SOUND SECTION ================= */
-.sound-section {
-  margin-top: 100px;
+/* ================= WEBSITE & APP DESIGNS (images only) ================= */
+.apps-5col {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.apps-5col img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  background: #f6f6f6; /* graceful while loading */
 }
 
+/* Responsive layout for app images */
+@media (max-width: 1200px) { .apps-5col { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px)  { .apps-5col { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .apps-5col { grid-template-columns: 1fr; } }
+
+/* ================= SOUNDS ================= */
+.sound-section { margin-top: 100px; }
 .sound-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 28px;
 }
-
 .sound-card {
   background: var(--panel);
   border-radius: var(--radius);
@@ -242,53 +237,41 @@ body {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 16px;
 }
-
 .sound-title {
   font-weight: 700;
   font-size: 20px;
-  margin-bottom: 16px;
+  margin: 0;
   color: var(--ink);
 }
-
 .sound-card audio {
   width: 100%;
   height: 42px;
   outline: none;
   border-radius: 8px;
 }
+audio::-webkit-media-controls-panel { background-color: var(--bg); }
 
-audio::-webkit-media-controls-panel {
-  background-color: var(--bg);
-}
-
-/* ================= WEBSITE & APP DESIGNS ================= */
-.apps-5col {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.apps-5col img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  background: #f6f6f6;
-}
-
-/* Responsive layout */
-@media (max-width: 1200px) {
-  .apps-5col { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 760px) {
-  .apps-5col { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 520px) {
-  .apps-5col { grid-template-columns: 1fr; }
+/* ================= RESPONSIVE FALLBACKS ================= */
+@media (max-width: 900px) {
+  .mosaic {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "big"
+      "s1"
+      "s2";
+  }
+  .abanners {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "ab-left"
+      "ab-left"
+      "ab-vert";
+  }
+  /* On mobile, make vertical media 16:9 for consistency */
+  .ab-vertical .media-vertical { aspect-ratio: 16 / 9; height: auto; }
 }
 
 /* ================= FOOTER ================= */
