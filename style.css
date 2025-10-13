@@ -19,12 +19,12 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
-/* Wave */
+/* WAVE */
 .top-wave { line-height: 0; background: #fff; }
 
-/* Header */
+/* HEADER */
 .name-block {
-  padding: 0 0 10px; /* reduced spacing from wave */
+  padding: 0 0 10px;
   text-align: left;
 }
 
@@ -32,7 +32,7 @@ body {
   font-family: Montserrat, Roboto, sans-serif;
   font-weight: 900;
   letter-spacing: .5px;
-  margin: 0 0 2px; /* smaller gap between title & subtitle */
+  margin: 0 0 2px;
   font-size: clamp(42px, 7vw, 72px);
 }
 
@@ -45,15 +45,15 @@ body {
   font-weight: 500;
 }
 
-/* Separator line */
+/* SEPARATOR */
 .header-separator {
-  height: 5px;
+  height: 6px;
   background: #ffffff;
-  border-bottom: 4px solid #fff;
+  border-bottom: 5px solid #ffffff;
   margin: 12px 0 36px;
 }
 
-/* Sections */
+/* SECTIONS */
 .section {
   margin: 44px 0 56px;
 }
@@ -67,19 +67,19 @@ body {
   margin: 0 0 26px;
 }
 
-/* Improved underline — starts on 3rd letter, ends slightly past title */
+/* Underline — starts in middle of 2nd letter, ends slightly past title */
 .underline::after {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: 0.15em;         /* start just after 2 letters */
-  right: -0.35em;       /* end a little past the text */
+  left: 0.25em;       /* halfway through 2nd letter */
+  right: -0.35em;     /* ends a bit after last letter */
   height: 6px;
   background: var(--accent);
   border-radius: 3px;
 }
 
-/* Cards */
+/* CARDS */
 .card {
   background: var(--panel);
   border-radius: var(--radius);
@@ -105,7 +105,7 @@ body {
   border: 0;
 }
 
-/* Video grid */
+/* VIDEO GRID */
 .video-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -121,7 +121,7 @@ body {
   .card-lg { grid-row: span 1; }
 }
 
-/* Banners */
+/* BANNERS */
 .masonry {
   column-count: 3;
   column-gap: 16px;
@@ -138,7 +138,7 @@ body {
 @media (max-width: 1000px) { .masonry { column-count: 2; } }
 @media (max-width: 640px) { .masonry { column-count: 1; } }
 
-/* Website & App Designs */
+/* WEBSITE & APP DESIGNS */
 .thumb-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -162,7 +162,7 @@ body {
   .thumb-grid { grid-template-columns: 1fr; }
 }
 
-/* Footer */
+/* FOOTER */
 .site-footer {
   color: #6b7280;
   padding: 24px 0 40px;
