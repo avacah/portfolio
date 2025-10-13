@@ -67,12 +67,12 @@ body {
   margin: 0 0 26px;
 }
 
-/* Underline — starts in middle of 2nd letter, ends slightly past title */
+/* Underline — starts slightly before middle of 2nd letter */
 .underline::after {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: 0.25em;       /* halfway through 2nd letter */
+  left: 0.18em;       /* starts just before middle of 2nd letter */
   right: -0.35em;     /* ends a bit after last letter */
   height: 6px;
   background: var(--accent);
