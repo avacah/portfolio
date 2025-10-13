@@ -185,6 +185,45 @@ body {
   .ab-vertical .media-vertical { aspect-ratio: 16 / 9; height: auto; }
 }
 
+
+
+/* ================= STATIC BANNERS ================= */
+.static-banners {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
+}
+
+.banner-vertical embed,
+.banner-vertical img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  background: #fafafa;
+}
+
+.banner-square embed,
+.banner-square img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #fafafa;
+}
+
+/* Adjust for large displays */
+@media (min-width: 1000px) {
+  .static-banners {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
 /* ================= SOUND SECTION ================= */
 .sound-section {
   margin-top: 100px;
