@@ -49,9 +49,7 @@ body {
 }
 
 /* ================= SECTIONS ================= */
-.section {
-  margin: 120px 0;
-}
+.section { margin: 120px 0; }
 
 .section-title {
   position: relative;
@@ -73,14 +71,67 @@ body {
   border-radius: 3px;
 }
 
-/* ================= VIDEOS SECTION ================= */
+/* ================= COMMON CARDS/PLAYERS ================= */
+.card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Generic 16:9 media wrapper */
+.media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  line-height: 0;          /* kill baseline gaps */
+  background: #000;        /* hide any internal letterbox */
+  border-radius: var(--radius);
+}
+
+/* Absolutely fill the wrapper to avoid subpixel gaps */
+.media iframe,
+.media video,
+.media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 0;
+  margin: 0;
+}
+
+/* Vertical media wrapper (phone style) */
+.media-vertical {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  line-height: 0;
+  background: #000;
+  border-radius: var(--radius);
+}
+.media-vertical iframe,
+.media-vertical video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 0;
+  margin: 0;
+}
+
+/* ================= VIDEOS (big left, two stacked right) ================= */
 .mosaic {
   display: grid;
   gap: 18px;
 }
 .mosaic .big { grid-area: big; }
-.mosaic .s1 { grid-area: s1; }
-.mosaic .s2 { grid-area: s2; }
+.mosaic .s1  { grid-area: s1; }
+.mosaic .s2  { grid-area: s2; }
 
 @media (min-width: 900px) {
   .mosaic {
@@ -93,47 +144,8 @@ body {
   }
 }
 
-.card {
-  background: var(--panel);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-/* Fix white gap under large video */
-.mosaic .big .media {
-  aspect-ratio: 16/9;
-  margin: 0;
-  display: block;
-  overflow: hidden;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background: #000;
-}
-
-.mosaic .big iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  margin: 0;
-  vertical-align: bottom;
-}
-
-.media {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-}
-.media iframe,
-.media video,
-.media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border: 0;
-}
+/* Ensure the big video has no inner gap at the bottom */
+.mosaic .big .media { background: #000; }
 
 /* ================= ANIMATED BANNERS ================= */
 .abanners {
@@ -142,32 +154,19 @@ body {
   flex-wrap: wrap;
 }
 
-/* Left column — swap video order */
+/* Left column — two horizontals stacked (with order swapped) */
 .ab-col {
   flex: 1 1 60%;
   display: flex;
-  flex-direction: column-reverse; /* swaps top & bottom videos */
+  flex-direction: column-reverse;   /* UEFA on top, Xbox below */
   gap: 18px;
 }
 
+/* Right side — one vertical */
 .ab-vertical {
   flex: 1 1 35%;
   display: flex;
   align-items: stretch;
-}
-
-.media-vertical {
-  position: relative;
-  aspect-ratio: 9/16;
-  overflow: hidden;
-}
-.media-vertical video,
-.media-vertical iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 0;
-  display: block;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -180,18 +179,11 @@ body {
       "s2";
   }
 
-  .abanners {
-    flex-direction: column;
-  }
+  .abanners { flex-direction: column; }
+  .ab-col, .ab-vertical { flex: 1 1 100%; }
 
-  .ab-col,
-  .ab-vertical {
-    flex: 1 1 100%;
-  }
-
-  .media-vertical {
-    aspect-ratio: 16/9;
-  }
+  /* On mobile, show vertical as regular 16:9 for consistency */
+  .media-vertical { aspect-ratio: 16 / 9; }
 }
 
 /* ================= BANNERS (STATIC IMAGES) ================= */
@@ -199,7 +191,6 @@ body {
   column-count: 3;
   column-gap: 16px;
 }
-
 .masonry img {
   width: 100%;
   margin: 0 0 16px;
@@ -214,7 +205,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
 .thumb {
   width: 100%;
   border-radius: 12px;
