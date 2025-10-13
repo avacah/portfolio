@@ -19,8 +19,10 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
+/* Wave */
 .top-wave { line-height: 0; background: #fff; }
 
+/* Header */
 .name-block { padding: 0 0 10px; text-align: left; }
 
 .display-name {
@@ -30,15 +32,16 @@ body {
   margin: 0 0 2px;
   font-size: clamp(42px, 7vw, 72px);
 }
-
 .name-accent { color: var(--accent); }
-
 .subtitle { margin: 0; color: var(--muted); font-size: clamp(18px, 2vw, 24px); font-weight: 500; }
 
-.header-separator { height: 6px; margin: 20px 0 50px; }
+/* Separator */
+.header-separator { height: 6px; margin: 20px 0 50px; background:#fff; }
 
-.section { margin: 120px 0; }
+/* Section spacing */
+.section { margin: 110px 0; }
 
+/* Titles + underline */
 .section-title {
   position: relative;
   display: inline-block;
@@ -47,90 +50,78 @@ body {
   font-size: clamp(26px, 3vw, 36px);
   margin: 0 0 40px;
 }
-.section-title.underline::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 0.25em;
-  right: -0.3em;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 3px;
+.section-title.underline::after{
+  content:""; position:absolute; bottom:-8px;
+  left:0.25em; right:-0.35em; height:6px;
+  background:var(--accent); border-radius:3px;
 }
 
-/* === Video Layout: two stacked + one vertical === */
-.video-layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+/* ====== Section 1: VIDEOS (big left, two stacked right) ====== */
+.mosaic{
+  display:grid;
+  gap:18px;
 }
-.video-column {
-  flex: 1 1 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.video-column iframe,
-.video-column video {
-  width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border: 0;
-  object-fit: cover;
-}
-.video-vertical {
-  flex: 1 1 35%;
-  display: flex;
-  align-items: stretch;
-}
-.video-vertical iframe,
-.video-vertical video {
-  width: 100%;
-  aspect-ratio: 9/16;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border: 0;
-  object-fit: cover;
+.mosaic .big{ grid-area: big; }
+.mosaic .s1 { grid-area: s1; }
+.mosaic .s2 { grid-area: s2; }
+
+@media (min-width: 900px){
+  .mosaic{
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "big s1"
+      "big s2";
+    align-items: stretch;
+  }
 }
 
-/* Inverted (Animated Banners) */
-.video-layout.vertical-left {
-  flex-direction: row-reverse;
+.card{
+  background:var(--panel);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.media{ position:relative; aspect-ratio:16/9; overflow:hidden; }
+.media iframe, .media video, .media img{
+  width:100%; height:100%; object-fit:cover; display:block; border:0;
+}
+
+/* ====== Section 2: ANIMATED BANNERS (two stacked left, one vertical right) ====== */
+.abanners{
+  display:flex; gap:18px; flex-wrap:wrap;
+}
+.ab-col{
+  flex:1 1 60%;
+  display:flex; flex-direction:column; gap:18px;
+}
+.ab-vertical{
+  flex:1 1 35%;
+  display:flex; align-items:stretch;
+}
+
+/* force vertical aspect on the single right video */
+.media-vertical{ position:relative; aspect-ratio:9/16; overflow:hidden; }
+.media-vertical video, .media-vertical iframe{
+  width:100%; height:100%; object-fit:cover; border:0; display:block;
 }
 
 /* Responsive stack */
-@media (max-width: 900px) {
-  .video-layout { flex-direction: column; }
-  .video-column, .video-vertical { flex: 1 1 100%; }
-  .video-vertical iframe, .video-vertical video { aspect-ratio: 16/9; }
+@media (max-width: 900px){
+  .mosaic{ grid-template-columns:1fr; grid-template-areas:"big" "s1" "s2"; }
+  .abanners{ flex-direction:column; }
+  .ab-col, .ab-vertical{ flex:1 1 100%; }
+  .media-vertical{ aspect-ratio:16/9; }
 }
 
-/* === Other sections === */
-.masonry { column-count: 3; column-gap: 16px; }
-.masonry img {
-  width: 100%;
-  margin-bottom: 16px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  display: block;
-}
-.thumb-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.thumb {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  display: block;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-.site-footer {
-  color: #6b7280;
-  padding: 24px 0 40px;
-  text-align: center;
-  font-weight: 500;
-}
+/* Masonry (static banners) */
+.masonry{ column-count:3; column-gap:16px; }
+.masonry img{ width:100%; margin:0 0 16px; border-radius:12px; box-shadow:var(--shadow); display:block; }
+
+/* Website & App Designs */
+.thumb-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.thumb{ width:100%; border-radius:12px; box-shadow:var(--shadow); aspect-ratio:16/9; object-fit:cover; display:block; }
+
+/* Footer */
+.site-footer{ color:#6b7280; padding:24px 0 40px; text-align:center; font-weight:500; }
