@@ -37,79 +37,99 @@ body {
 
 .subtitle { margin: 0; color: var(--muted); font-size: clamp(18px, 2vw, 24px); font-weight: 500; }
 
-/* === Separator === */
-.header-separator {
-  height: 6px; background: #fff; border-bottom: 5px solid #fff; margin: 20px 0 50px;
-}
+.header-separator { height: 6px; margin: 20px 0 50px; }
 
 /* === Section spacing === */
-.section { margin: 100px 0; }
-.section:first-of-type { margin-bottom: 140px; }
-.section:nth-of-type(2) { margin-bottom: 120px; }
+.section { margin: 120px 0; }
 
 /* === Titles + underline === */
 .section-title {
-  position: relative; display: inline-block;
+  position: relative;
+  display: inline-block;
   font-family: Montserrat, Roboto, sans-serif;
-  font-weight: 900; font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  font-size: clamp(26px, 3vw, 36px);
   margin: 0 0 40px;
 }
-h2.section-title.underline { line-height: 1.1; }
-h2.section-title.underline::after {
-  content: ""; position: absolute; bottom: -8px;
-  left: 0.25em; right: -0.35em; height: 6px;
-  background: var(--accent); border-radius: 3px; pointer-events: none;
+.section-title.underline::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0.25em;
+  right: -0.3em;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 3px;
 }
 
-/* === Card base === */
-.card { background: var(--panel); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
-.card .media { position: relative; aspect-ratio: 16/9; overflow: hidden; }
-.card .media iframe, .card .media video, .card .media img { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
-
-/* === Video mosaics ===
-   Default: single column on narrow screens.
-   On >= 900px: 2 columns, big spans 2 rows.
-*/
-.video-mosaic {
-  display: grid;
-  gap: 18px;
+/* === Video Layouts === */
+.video-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.video-mosaic .big   { grid-area: big; }
-.video-mosaic .small1{ grid-area: s1; }
-.video-mosaic .small2{ grid-area: s2; }
+.video-large {
+  flex: 1 1 60%;
+  aspect-ratio: 16/9;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.video-column {
+  flex: 1 1 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.video-column iframe,
+.video-column video,
+.video-large iframe,
+.video-large video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
 
-/* Standard layout (big LEFT, smalls RIGHT stacked) */
-@media (min-width: 900px) {
-  .video-mosaic {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "big s1"
-      "big s2";
-    align-items: stretch;
+/* Inverted layout (for animated banners) */
+.video-layout.inverted {
+  flex-direction: row-reverse;
+}
+
+/* Responsive collapse */
+@media (max-width: 900px) {
+  .video-layout {
+    flex-direction: column;
+  }
+  .video-large, .video-column {
+    flex: 1 1 100%;
   }
 }
 
-/* Inverted layout (smalls LEFT stacked, big RIGHT) */
-@media (min-width: 900px) {
-  .video-mosaic.video-mosaic--invert {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "s1 big"
-      "s2 big";
-  }
-}
-
-/* === Masonry (static banners) === */
+/* === Other sections === */
 .masonry { column-count: 3; column-gap: 16px; }
-.masonry img { width: 100%; margin: 0 0 16px; border-radius: 12px; box-shadow: var(--shadow); display: block; }
-@media (max-width: 1000px) { .masonry { column-count: 2; } }
-@media (max-width: 640px)  { .masonry { column-count: 1; } }
-
-/* === Website & App Designs grid === */
-.thumb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.thumb { width: 100%; border-radius: 12px; box-shadow: var(--shadow); display: block; aspect-ratio: 16/9; object-fit: cover; }
-@media (max-width: 900px) { .thumb-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 560px) { .thumb-grid { grid-template-columns: 1fr; } }
+.masonry img {
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: block;
+}
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.thumb {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
 
 /* === Footer === */
-.site-footer { color: #6b7280; padding: 24px 0 40px; margin-top: 20px; text-align: center; font-weight: 500; }
+.site-footer { color: #6b7280; padding: 24px 0 40px; text-align: center; font-weight: 500; }
