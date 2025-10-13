@@ -1,9 +1,9 @@
 :root{
-  --bg: #f5f7f6;
+  --bg: #ffffff;           /* white page */
   --panel: #ffffff;
-  --ink: #1c1e21;
-  --muted: #6b7280;
-  --accent: #84a286;        /* requested green */
+  --ink: #111316;
+  --muted: #5a6069;        /* dark grey for subtitle */
+  --accent: #84a286;       /* green */
   --shadow: 0 10px 30px rgba(0,0,0,.08);
   --radius: 14px;
 }
@@ -11,7 +11,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif; /* Roboto */
+  font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   color: var(--ink);
   background: var(--bg);
   line-height: 1.55;
@@ -19,27 +19,27 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
-/* BIG WAVE */
-.big-wave{ position: relative; width: 100%; line-height: 0; }
+/* Solid green wave */
+.top-wave{ line-height:0; }
 
-/* Header */
-.site-header{
-  background: #222;
-  color: #fff;
-  padding: 110px 0 56px;  /* more top padding as requested */
-  position: relative;
+/* Name block (white background) */
+.name-block{
+  padding: 32px 0 18px;
 }
-.brand{
-  font-size: clamp(32px, 5vw, 44px);
+.display-name{
+  font-family: Montserrat, Roboto, sans-serif;
+  font-weight: 900;                      /* bold */
   letter-spacing: .5px;
-  margin: 0 0 6px;
-  font-weight: 900;
+  margin: 0 0 8px;
+  font-size: clamp(48px, 8vw, 86px);     /* much bigger */
 }
-.brand .accent{ color: var(--accent); } /* "Agatha" color */
-.tagline{
-  margin: 8px 0 0;
-  color: #e5e7eb;
-  font-weight: 400;
+.name-accent{ color: var(--accent); }
+
+.subtitle{
+  margin: 0;
+  color: var(--muted);                    /* dark grey */
+  font-size: clamp(18px, 2.3vw, 26px);    /* bigger than before */
+  font-weight: 500;
 }
 
 /* Sections */
@@ -47,21 +47,25 @@ body {
 .section-title{
   position: relative;
   display: inline-block;
-  font-size: 22px;
+  font-family: Montserrat, Roboto, sans-serif;
   font-weight: 900;
-  margin: 0 0 18px;
+  font-size: clamp(26px, 3vw, 34px);     /* bigger titles */
+  margin: 0 0 22px;
 }
 
-/* Underline starting after 2 letters (uses ch units) */
+/* Underline:
+   - start at 3rd character (skip 2) => left: 2ch
+   - end one space after last letter => right: -1ch (extends past the end)
+*/
 .underline::after{
   content: "";
   position: absolute;
-  left: 2ch;                 /* skip first two characters */
-  right: 0;
-  height: 4px;
-  bottom: -6px;
-  background: var(--accent); /* underline color */
-  border-radius: 2px;
+  left: 2ch;
+  right: -1ch;
+  height: 5px;
+  bottom: -8px;
+  background: var(--accent);
+  border-radius: 3px;
 }
 
 /* Cards / media shells */
@@ -90,7 +94,7 @@ body {
   background: linear-gradient(#111, #0c0c0c);
 }
 
-/* VIDEO GRID (magazine layout) */
+/* VIDEO GRID */
 .video-grid{
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -104,7 +108,7 @@ body {
   .card-lg{ grid-row: span 1; }
 }
 
-/* MASONRY (Banners) */
+/* BANNERS masonry */
 .masonry{
   column-count: 3;
   column-gap: 16px;
@@ -142,6 +146,6 @@ body {
 
 /* Footer */
 .site-footer{
-  background:#222; color:#fff; padding: 28px 0; margin-top: 40px;
-  text-align: center; font-weight: 600;
+  color:#6b7280; padding: 24px 0 40px; margin-top: 16px;
+  text-align: center; font-weight: 500;
 }
