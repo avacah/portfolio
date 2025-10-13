@@ -10,6 +10,7 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+
 body {
   font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   color: var(--ink);
@@ -71,15 +72,7 @@ body {
   border-radius: 3px;
 }
 
-/* ================= COMMON CARDS/PLAYERS ================= */
-.card {
-  background: var(--panel);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-/* Generic 16:9 media wrapper */
+/* ================= MEDIA ================= */
 .media {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -89,7 +82,6 @@ body {
   border-radius: var(--radius);
 }
 
-/* Absolutely fill wrapper (kills sub-pixel white slivers) */
 .media iframe,
 .media video,
 .media img {
@@ -103,7 +95,6 @@ body {
   margin: 0;
 }
 
-/* Vertical media wrapper */
 .media-vertical {
   position: relative;
   aspect-ratio: 9 / 16;
@@ -112,6 +103,7 @@ body {
   background: #000;
   border-radius: var(--radius);
 }
+
 .media-vertical iframe,
 .media-vertical video {
   position: absolute;
@@ -250,41 +242,20 @@ audio::-webkit-media-controls-panel {
 /* ================= WEBSITE & APP DESIGNS ================= */
 .apps-5col {
   display: grid;
-  grid-template-columns: repeat(5, minmax(180px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  align-items: start;
 }
 
-.app-card {
-  background: var(--panel);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  padding: 16px 16px 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.app-pill {
-  font-family: Montserrat, Roboto, sans-serif;
-  font-weight: 900;
-  font-size: 18px;
-  text-align: center;
-  color: var(--ink);
-  background: #fff;
-  border-radius: 9999px;
-  padding: 10px 16px;
-  margin: 0 auto 14px;
-  box-shadow: 0 6px 16px rgba(0,0,0,.06);
-  max-width: 90%;
-}
-
-.app-card img {
+.apps-5col img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px 12px 0 0;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
 }
 
+/* Responsive layout */
 @media (max-width: 1200px) {
   .apps-5col { grid-template-columns: repeat(3, 1fr); }
 }
