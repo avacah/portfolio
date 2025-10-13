@@ -19,10 +19,8 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
-/* === Wave === */
 .top-wave { line-height: 0; background: #fff; }
 
-/* === Header === */
 .name-block { padding: 0 0 10px; text-align: left; }
 
 .display-name {
@@ -39,10 +37,8 @@ body {
 
 .header-separator { height: 6px; margin: 20px 0 50px; }
 
-/* === Section spacing === */
 .section { margin: 120px 0; }
 
-/* === Titles + underline === */
 .section-title {
   position: relative;
   display: inline-block;
@@ -62,50 +58,52 @@ body {
   border-radius: 3px;
 }
 
-/* === Video Layouts === */
+/* === Video Layout: two stacked + one vertical === */
 .video-layout {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
-.video-large {
-  flex: 1 1 60%;
-  aspect-ratio: 16/9;
-  box-shadow: var(--shadow);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
 .video-column {
-  flex: 1 1 35%;
+  flex: 1 1 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 20px;
 }
 .video-column iframe,
-.video-column video,
-.video-large iframe,
-.video-large video {
+.video-column video {
   width: 100%;
-  height: 100%;
-  border: 0;
+  aspect-ratio: 16/9;
   border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 0;
+  object-fit: cover;
+}
+.video-vertical {
+  flex: 1 1 35%;
+  display: flex;
+  align-items: stretch;
+}
+.video-vertical iframe,
+.video-vertical video {
+  width: 100%;
+  aspect-ratio: 9/16;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 0;
   object-fit: cover;
 }
 
-/* Inverted layout (for animated banners) */
-.video-layout.inverted {
+/* Inverted (Animated Banners) */
+.video-layout.vertical-left {
   flex-direction: row-reverse;
 }
 
-/* Responsive collapse */
+/* Responsive stack */
 @media (max-width: 900px) {
-  .video-layout {
-    flex-direction: column;
-  }
-  .video-large, .video-column {
-    flex: 1 1 100%;
-  }
+  .video-layout { flex-direction: column; }
+  .video-column, .video-vertical { flex: 1 1 100%; }
+  .video-vertical iframe, .video-vertical video { aspect-ratio: 16/9; }
 }
 
 /* === Other sections === */
@@ -130,6 +128,9 @@ body {
   aspect-ratio: 16/9;
   object-fit: cover;
 }
-
-/* === Footer === */
-.site-footer { color: #6b7280; padding: 24px 0 40px; text-align: center; font-weight: 500; }
+.site-footer {
+  color: #6b7280;
+  padding: 24px 0 40px;
+  text-align: center;
+  font-weight: 500;
+}
