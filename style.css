@@ -2,7 +2,7 @@
   --bg: #ffffff;
   --panel: #ffffff;
   --ink: #111316;
-  --muted: #3f444a;       /* darker subtitle */
+  --muted: #3f444a;
   --accent: #84a286;
   --shadow: 0 10px 30px rgba(0,0,0,.08);
   --radius: 14px;
@@ -20,11 +20,11 @@ body {
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
 /* Wave */
-.top-wave { line-height: 0; }
+.top-wave { line-height: 0; background: #fff; }
 
 /* Header */
 .name-block {
-  padding: 48px 0 18px; /* more top padding */
+  padding: 8px 0 18px; /* closer to wave */
   text-align: left;
 }
 
@@ -41,14 +41,14 @@ body {
 .subtitle {
   margin: 0 0 18px;
   color: var(--muted);
-  font-size: clamp(18px, 2.4vw, 28px); /* smaller */
+  font-size: clamp(18px, 2.4vw, 28px);
   font-weight: 500;
 }
 
 /* Separator line */
 .header-separator {
-  height: 18px;          /* thicker */
-  background: #ffffff;   /* solid white */
+  height: 22px;
+  background: #ffffff;
   border-bottom: none;
   margin-bottom: 40px;
 }
@@ -67,7 +67,7 @@ body {
   margin: 0 0 26px;
 }
 
-/* Underline spans 1/6 before and after text */
+/* Underline 1/6 before and after */
 .underline::after {
   content: "";
   position: absolute;
