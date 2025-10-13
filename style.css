@@ -84,12 +84,12 @@ body {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  line-height: 0;          /* kill baseline gaps */
-  background: #000;        /* hide any internal letterbox */
+  line-height: 0;
+  background: #000;
   border-radius: var(--radius);
 }
 
-/* Absolutely fill the wrapper to avoid subpixel gaps */
+/* Absolutely fill wrapper (kills sub-pixel white slivers) */
 .media iframe,
 .media video,
 .media img {
@@ -103,7 +103,7 @@ body {
   margin: 0;
 }
 
-/* Vertical media wrapper (phone style) */
+/* Vertical media wrapper */
 .media-vertical {
   position: relative;
   aspect-ratio: 9 / 16;
@@ -144,29 +144,56 @@ body {
   }
 }
 
-/* Ensure the big video has no inner gap at the bottom */
-.mosaic .big .media { background: #000; }
+/* IMPORTANT:
+   Let the big video fill whatever height the two right cards create.
+   This removes the white strip at the bottom. */
+.mosaic .big {
+  display: grid;          /* so the child can take full height */
+}
+.mosaic .big .media {
+  aspect-ratio: auto;     /* not locked to 16:9 here */
+  height: 100%;           /* fill grid area height */
+  background: #000;
+}
 
 /* ================= ANIMATED BANNERS ================= */
+/* Switch to a grid so the vertical spans both rows and matches the left stack */
 .abanners {
-  display: flex;
+  display: grid;
   gap: 18px;
-  flex-wrap: wrap;
 }
 
-/* Left column — two horizontals stacked (with order swapped) */
+@media (min-width: 900px) {
+  .abanners {
+    grid-template-columns: 2fr 1fr;   /* left wider (two horizontals), right vertical */
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "ab-left ab-vert"
+      "ab-left ab-vert";
+    align-items: stretch;
+  }
+}
+
+/* Left column (two horizontals, top/bottom with swapped order) */
 .ab-col {
-  flex: 1 1 60%;
-  display: flex;
-  flex-direction: column-reverse;   /* UEFA on top, Xbox below */
+  grid-area: ab-left;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   gap: 18px;
+  /* If you want UEFA on top and Xbox below, leave as-is.
+     If you need to flip, uncomment next line:
+     grid-auto-flow: dense; */
 }
 
-/* Right side — one vertical */
+/* Right vertical: span both rows; fill full height */
 .ab-vertical {
-  flex: 1 1 35%;
-  display: flex;
-  align-items: stretch;
+  grid-area: ab-vert;
+  display: grid;
+}
+.ab-vertical .media-vertical {
+  aspect-ratio: auto;   /* allow to match full height of grid area */
+  height: 100%;
+  background: #000;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -179,11 +206,17 @@ body {
       "s2";
   }
 
-  .abanners { flex-direction: column; }
-  .ab-col, .ab-vertical { flex: 1 1 100%; }
+  .abanners {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "ab-left"
+      "ab-left"
+      "ab-vert";
+  }
 
   /* On mobile, show vertical as regular 16:9 for consistency */
-  .media-vertical { aspect-ratio: 16 / 9; }
+  .ab-vertical .media-vertical { aspect-ratio: 16 / 9; height: auto; }
 }
 
 /* ================= BANNERS (STATIC IMAGES) ================= */
