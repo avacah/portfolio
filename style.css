@@ -20,47 +20,55 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
-/* ================= WAVE (thicker, visible, text inside) ================= */
+/* ================= WAVE (thicker and tighter) ================= */
 .top-wave {
   position: relative;
-  height: 320px;
+  height: 480px;                 /* thicker wave area */
   overflow: hidden;
   background: transparent;
   color: #fff;
+  margin-bottom: -120px;         /* remove the big white gap below */
 }
+
 .top-wave svg {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 320px;
+  height: 480px;
   display: block;
   pointer-events: none;
 }
 
-/* ================= HEADER (inside wave, left-aligned) ================= */
+/* ================= HEADER INSIDE THE WAVE ================= */
 .name-block {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
   height: 100%;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  padding-left: 8%;
   color: #fff;
 }
+
 .display-name {
   margin: 0 0 8px;
   font-family: Montserrat, Roboto, sans-serif;
   font-weight: 900;
   letter-spacing: .5px;
-  font-size: clamp(48px, 8vw, 80px);
+  font-size: clamp(48px, 8vw, 84px);
   line-height: 1.05;
-  color: #fff;
 }
-.name-accent { color: #fff; }
+
+/* "AGATHA" white, "POLICELLA" black */
+.name-accent { color: #ffffff; }
+.display-name { color: #000000; }
+
 .subtitle {
   margin: 0;
   font-size: clamp(18px, 2vw, 24px);
@@ -280,6 +288,8 @@ audio::-webkit-media-controls-panel { background-color: var(--bg); }
     aspect-ratio: 16 / 9;
     height: auto;
   }
+  .top-wave { height: 380px; margin-bottom: -90px; }
+  .top-wave svg { height: 380px; }
 }
 
 /* ================= FOOTER ================= */
