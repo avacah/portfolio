@@ -67,16 +67,23 @@ body {
   margin: 0 0 26px;
 }
 
-/* Underline — starts slightly before middle of 2nd letter */
-.underline::after {
+/* UNDERLINE FIXED */
+h2.section-title.underline {
+  position: relative;
+  display: inline-block;
+  line-height: 1.1;
+}
+
+h2.section-title.underline::after {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: 0.18em;       /* starts just before middle of 2nd letter */
-  right: -0.35em;     /* ends a bit after last letter */
+  left: 0.25em;       /* start after 2nd letter */
+  right: -0.35em;     /* end just past title */
   height: 6px;
   background: var(--accent);
   border-radius: 3px;
+  pointer-events: none;
 }
 
 /* CARDS */
