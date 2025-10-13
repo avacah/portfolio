@@ -24,7 +24,7 @@ body {
 
 /* Header */
 .name-block {
-  padding: 0 0 12px; /* closer to wave */
+  padding: 0 0 10px; /* reduced spacing from wave */
   text-align: left;
 }
 
@@ -32,7 +32,7 @@ body {
   font-family: Montserrat, Roboto, sans-serif;
   font-weight: 900;
   letter-spacing: .5px;
-  margin: 0 0 4px; /* smaller gap between title & subtitle */
+  margin: 0 0 2px; /* smaller gap between title & subtitle */
   font-size: clamp(42px, 7vw, 72px);
 }
 
@@ -41,16 +41,16 @@ body {
 .subtitle {
   margin: 0;
   color: var(--muted);
-  font-size: clamp(18px, 2.4vw, 28px);
+  font-size: clamp(18px, 2vw, 24px);
   font-weight: 500;
 }
 
 /* Separator line */
 .header-separator {
-  height: 20px;
+  height: 5px;
   background: #ffffff;
-  border-bottom: none;
-  margin-bottom: 36px;
+  border-bottom: 4px solid #fff;
+  margin: 12px 0 36px;
 }
 
 /* Sections */
@@ -67,13 +67,13 @@ body {
   margin: 0 0 26px;
 }
 
-/* Underline: start slightly after the title start, end a bit past the text */
+/* Improved underline — starts on 3rd letter, ends slightly past title */
 .underline::after {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: 16.66%;
-  width: 72%; /* extended a bit past title width */
+  left: 0.15em;         /* start just after 2 letters */
+  right: -0.35em;       /* end a little past the text */
   height: 6px;
   background: var(--accent);
   border-radius: 3px;
@@ -103,13 +103,6 @@ body {
   object-fit: cover;
   display: block;
   border: 0;
-}
-
-.card-caption {
-  padding: 10px 14px;
-  color: #cbd5e1;
-  font-size: 13px;
-  background: linear-gradient(#111, #0c0c0c);
 }
 
 /* Video grid */
