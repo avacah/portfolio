@@ -25,16 +25,16 @@ body {
   position: relative;
   height: 480px;                 /* thick hero */
   overflow: hidden;
-  background: transparent;       /* keep transparent so SVG path is the color/curve */
+  background: transparent;       /* SVG controls the color */
   color: #fff;
-  margin-bottom: -120px;         /* removes large white gap below wave */
+  margin-bottom: -120px;         /* removes white gap */
 }
 .top-wave svg {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 480px;                 /* match container height */
+  height: 480px;
   display: block;
   pointer-events: none;
 }
@@ -49,11 +49,11 @@ body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;       /* vertical center baseline */
-  align-items: flex-start;        /* left aligned */
+  justify-content: center;
+  align-items: flex-start;
   text-align: left;
   color: #fff;
-  transform: translateY(-8%);    /* base lift (will be overridden below) */
+  transform: translateY(-8%);
 }
 
 .display-name {
@@ -73,7 +73,7 @@ body {
   margin: 0;
   font-size: clamp(18px, 2vw, 24px);
   font-weight: 400;
-  color: rgba(255,255,255,0.92);
+  color: var(--muted); /* dark grey */
 }
 
 /* ================= SECTIONS & TITLES ================= */
@@ -91,8 +91,8 @@ body {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: 0.25em;          /* start mid-second letter */
-  right: -0.35em;        /* end a little past the last letter */
+  left: 0.25em;
+  right: -0.35em;
   height: 6px;
   background: var(--accent);
   border-radius: 3px;
@@ -148,7 +148,7 @@ body {
 
 .mosaic .big { display: grid; }
 .mosaic .big .media {
-  aspect-ratio: auto;     /* fill height equal to the two stacked rights */
+  aspect-ratio: auto;
   height: 100%;
 }
 
@@ -289,7 +289,6 @@ audio::-webkit-media-controls-panel { background-color: var(--bg); }
     height: auto;
   }
 
-  /* slightly smaller hero on mobile */
   .top-wave { height: 380px; margin-bottom: -90px; }
   .top-wave svg { height: 380px; }
 }
@@ -304,19 +303,18 @@ audio::-webkit-media-controls-panel { background-color: var(--bg); }
 
 /* =========================================================
    VISUAL LEFT-EDGE CENTERING FOR HEADER IN THE WAVE
-   (compensates for deeper dip on the right side)
    ========================================================= */
-.name-block { transform: translateY(-14%); }              /* default lift for desktop */
+.name-block { transform: translateY(-14%); }
 
 @media (min-width: 1600px) {
-  .name-block { transform: translateY(-18%); }            /* largest screens: deepest dip */
+  .name-block { transform: translateY(-18%); }
 }
 @media (min-width: 1200px) and (max-width: 1599px) {
-  .name-block { transform: translateY(-16%); }            /* standard desktops */
+  .name-block { transform: translateY(-16%); }
 }
 @media (max-width: 1199px) and (min-width: 900px) {
-  .name-block { transform: translateY(-12%); }            /* laptops/tablets landscape */
+  .name-block { transform: translateY(-12%); }
 }
 @media (max-width: 899px) {
-  .name-block { transform: translateY(-8%); }             /* mobile: curve is shallower */
+  .name-block { transform: translateY(-8%); }
 }
