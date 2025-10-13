@@ -20,14 +20,14 @@ body {
 
 .wrap { width: min(1100px, 92vw); margin-inline: auto; }
 
-/* ================= WAVE (thicker and tighter) ================= */
+/* ================= WAVE (thicker, visible curve) ================= */
 .top-wave {
   position: relative;
-  height: 480px;                 /* thicker wave area */
+  height: 480px;                 /* thick hero */
   overflow: hidden;
-  background: transparent;
+  background: transparent;       /* keep transparent so SVG path edge is visible */
   color: #fff;
-  margin-bottom: -120px;         /* remove the big white gap below */
+  margin-bottom: -120px;         /* pulls following content up to remove big white gap */
 }
 
 .top-wave svg {
@@ -35,7 +35,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 480px;
+  height: 480px;                 /* match container */
   display: block;
   pointer-events: none;
 }
@@ -50,10 +50,11 @@ body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: center;       /* vertically center within the wave */
+  align-items: flex-start;        /* left aligned */
   text-align: left;
   color: #fff;
+  transform: translateY(-8%);    /* lift so it’s not cut by the curve */
 }
 
 .display-name {
@@ -76,6 +77,17 @@ body {
   color: rgba(255,255,255,0.92);
 }
 
+/* fine-tune lift at different sizes */
+@media (min-width: 1400px) {
+  .name-block { transform: translateY(-10%); }
+}
+@media (max-width: 900px) {
+  .name-block { transform: translateY(-6%); }
+}
+@media (max-width: 600px) {
+  .name-block { transform: translateY(-4%); }
+}
+
 /* ================= SECTIONS & TITLES ================= */
 .section { margin: 120px 0; }
 
@@ -91,8 +103,8 @@ body {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: 0.25em;
-  right: -0.35em;
+  left: 0.25em;          /* start mid-second letter */
+  right: -0.35em;        /* end a little past the last */
   height: 6px;
   background: var(--accent);
   border-radius: 3px;
@@ -148,7 +160,7 @@ body {
 
 .mosaic .big { display: grid; }
 .mosaic .big .media {
-  aspect-ratio: auto;
+  aspect-ratio: auto;     /* allow it to fill height equal to right column stack */
   height: 100%;
 }
 
@@ -288,8 +300,11 @@ audio::-webkit-media-controls-panel { background-color: var(--bg); }
     aspect-ratio: 16 / 9;
     height: auto;
   }
+
+  /* slightly smaller hero on mobile */
   .top-wave { height: 380px; margin-bottom: -90px; }
   .top-wave svg { height: 380px; }
+  .name-block { transform: translateY(-6%); }
 }
 
 /* ================= FOOTER ================= */
