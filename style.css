@@ -1,12 +1,11 @@
-/* ---------------------------
-   GLOBAL STYLES
----------------------------- */
+/* ===========================
+   BASE STYLES
+=========================== */
 
 :root {
   --green: #87a58b;
   --ink: #1d1d1b;
   --grey: #333;
-  --light-bg: #f9f9f9;
   --radius: 12px;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -17,65 +16,87 @@
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background-color: #fff;
+  font-family: "Roboto", sans-serif;
   color: var(--ink);
+  background: #fff;
   line-height: 1.6;
 }
 
-/* ---------------------------
-   HERO SECTION
----------------------------- */
-
-.hero {
-  position: relative;
-  background-color: var(--green);
-  text-align: center;
-  color: white;
-  overflow: hidden;
-  padding: 100px 20px 0 20px;
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.hero h1 {
-  font-size: 5rem;
+/* ===========================
+   TOP WAVE & HEADER
+=========================== */
+
+.top-wave {
+  position: relative;
+  background: var(--green);
+  height: 340px;
+  overflow: hidden;
+}
+
+.top-wave svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.name-block {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  text-align: center;
+  color: white;
+}
+
+.display-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4rem;
   font-weight: 900;
   margin: 0;
   letter-spacing: 1px;
 }
 
-.hero h1 span {
+.name-accent {
+  color: white;
+}
+
+.display-name span + span {
   color: black;
 }
 
-.hero p {
+.subtitle {
+  font-size: 1.3rem;
+  margin-top: 15px;
   color: white;
-  font-size: 1.4rem;
-  margin-top: 20px;
 }
 
-.hero svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: block;
+.header-separator {
+  height: 40px;
 }
 
-/* ---------------------------
-   SECTION HEADERS
----------------------------- */
+/* ===========================
+   SECTIONS & TITLES
+=========================== */
 
 .section {
-  padding: 60px 8%;
-  background-color: #fff;
+  padding: 60px 20px;
 }
 
 .section-title {
-  font-size: 2.4rem;
+  font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  margin-bottom: 40px;
-  position: relative;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
   display: inline-block;
+  position: relative;
 }
 
 .underline::after {
@@ -88,13 +109,17 @@ body {
   margin-top: 8px;
 }
 
-/* ---------------------------
-   MOSAIC GRID (for videos, prints, etc.)
----------------------------- */
+/* ===========================
+   VIDEO & MEDIA GRIDS
+=========================== */
 
 .mosaic {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    "big s1"
+    "big s2";
   gap: 24px;
 }
 
@@ -105,95 +130,184 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
 .card iframe,
-.card img {
+.card video,
+.card img,
+.media embed {
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  border: none;
   display: block;
 }
 
-.card-content {
-  padding: 12px 16px 20px;
+.card.big {
+  grid-area: big;
 }
 
-/* ---------------------------
+.card.s1 {
+  grid-area: s1;
+}
+
+.card.s2 {
+  grid-area: s2;
+}
+
+/* ===========================
    VIDEO DESCRIPTIONS
----------------------------- */
+=========================== */
 
 .video-desc {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--grey); /* dark grey text */
-  margin-top: 8px;
+  color: var(--grey);
+  margin: 12px 16px 20px;
 }
 
-/* ---------------------------
-   SOUNDS SECTION (audio players)
----------------------------- */
+/* ===========================
+   ANIMATED BANNERS
+=========================== */
 
-.audio-grid {
+.abanners {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
 }
 
-.audio-card {
-  background: #fff;
+.ab-col {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ab-vertical {
+  flex: 1;
+}
+
+.media-vertical video {
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* ===========================
+   PRINTS
+=========================== */
+
+.static-banners {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.banner-vertical,
+.banner-square {
+  flex: 1;
+  max-width: 380px;
+}
+
+.banner-vertical embed,
+.banner-square embed {
+  width: 100%;
+  height: auto;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+}
+
+/* ===========================
+   APPS GRID
+=========================== */
+
+.apps-5col {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.apps-5col img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ===========================
+   SOUND SECTION
+=========================== */
+
+.sound-section {
+  background: var(--light-bg);
+  padding: 60px 20px;
+}
+
+.sound-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.sound-card {
   flex: 1 1 45%;
-  padding: 16px;
 }
 
-.audio-card p {
+.sound-title {
   font-weight: 600;
-  margin: 0 0 8px;
+  margin-bottom: 10px;
+  color: var(--ink);
 }
 
-/* ---------------------------
-   FOOTER
----------------------------- */
+audio {
+  width: 100%;
+  outline: none;
+}
 
-footer {
+/* ===========================
+   FOOTER
+=========================== */
+
+.site-footer {
   text-align: center;
   padding: 40px 0;
   color: #777;
   font-size: 0.9rem;
-  background: #fff;
 }
 
-/* ---------------------------
-   RESPONSIVE DESIGN
----------------------------- */
+/* ===========================
+   RESPONSIVE
+=========================== */
 
-@media (max-width: 900px) {
-  .hero h1 {
-    font-size: 3rem;
+@media (max-width: 1000px) {
+  .mosaic {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "big"
+      "s1"
+      "s2";
   }
 
-  .hero p {
-    font-size: 1.1rem;
+  .abanners {
+    flex-direction: column;
   }
 
-  .section {
-    padding: 40px 5%;
+  .apps-5col {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .mosaic {
+  .display-name {
+    font-size: 2.6rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .apps-5col {
     grid-template-columns: 1fr;
-  }
-
-  .audio-grid {
-    flex-direction: column;
-  }
-
-  .audio-card {
-    flex: 1 1 100%;
   }
 }
